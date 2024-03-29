@@ -17,9 +17,9 @@ async function getMovies(url) {
 
 function showMovies(movies) {
     main.innerHTML = '';
-    
+
     movies.forEach(movie => {
-        const {title, poster_path, vote_average, overview} = movie;
+        const { title, poster_path, vote_average, overview } = movie;
 
         const movieEl = document.createElement('div');
         movieEl.classList.add('movie');
@@ -28,13 +28,7 @@ function showMovies(movies) {
         <img src="${IMG_PATH + poster_path}" alt="${title}">
         <div class="movie-info">
             <h3>${title}</h3>
-            <span class="${getClassByRate(vote_average)}">${vote_average.toFixed(1)}
-            <svg width="300" height="200">
-            <polygon points="100,10 40,198 190,78 10,78 160,198"
-            style="fill:lime;" />
-          Sorry, your browser does not support inline SVG.
-          </svg>
-          </span>
+            <span class="${getClassByRate(vote_average)}">${vote_average.toFixed(1)}</span>
         </div>
         <div class="overview">
             <h3>Overview</h3>
