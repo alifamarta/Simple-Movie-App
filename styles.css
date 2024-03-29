@@ -18,12 +18,20 @@ body {
 header {
     padding: 1rem;
     display: flex;
-    justify-content: flex-end;
     background-color: var(--secondary-color);
+}
+
+button {
+    color: white;
+    padding: 10px 15px;
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    border-radius: 350px;
 }
 
 .search {
     background-color: transparent;
+    margin-left: 1000px;
     border: 2px solid var(--primary-color);
     border-radius: 50px;
     font-family: inherit;

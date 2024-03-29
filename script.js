@@ -49,6 +49,13 @@ function getClassByRate(vote) {
     }
 }
 
+search.addEventListener("keyup", function (event) {
+    if (event.key === "enter") {
+        event.preventDefault();
+        form.submit();
+    }
+})
+
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
