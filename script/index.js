@@ -36,6 +36,10 @@ function showMovies(movies) {
         </div>
         `;
         main.appendChild(movieEl);
+
+        movieEl.addEventListener('click', function () {
+            window.location.href = '../pages/details.html'
+        })
     });
 }
 
@@ -68,3 +72,4 @@ form.addEventListener('submit', (e) => {
         window.location.reload();
     }
 })
+

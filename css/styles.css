@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
-    --primary-color: #22254b;
-    --secondary-color: #373b69;
+    --primary-color: #14181c;
+    --secondary-color: #445566;
 }
 
 * {
@@ -10,7 +10,7 @@
 }
 
 body {
-    background-color: var(--primary-color);
+    background: linear-gradient(#1f262d 10%, var(--primary-color) 15%);
     font-family: 'Istok Web', sans-serif;
     margin: 0;
 }
@@ -18,35 +18,34 @@ body {
 header {
     padding: 1rem;
     display: flex;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
+}
+
+#form {
+    display: flex;
 }
 
 button {
-    color: white;
+    color: darkgray;
     padding: 10px 15px;
     background-color: transparent;
-    border: 2px solid var(--primary-color);
-    border-radius: 350px;
+    margin-left: -50px;
+    border: none;
 }
 
 .search {
-    background-color: transparent;
-    margin-left: 1000px;
-    border: 2px solid var(--primary-color);
-    border-radius: 50px;
+    background-color: black;
+    margin-left: 1070px;
+    border: 2px solid black;
     font-family: inherit;
     font-size: 1rem;
     padding: 0.5rem 1rem;
     color: #fff;
-}
-
-.search::placeholder {
-    color: #7378c5;
+    border-radius: 50px;
 }
 
 .search:focus {
-    outline:none;
-    background-color: var(--primary-color);
+    outline: none;
 }
 
 main {
@@ -57,12 +56,13 @@ main {
 
 .movie {
     width: 300px;
+    height: 600px;
     margin: 1rem;
     background-color: var(--secondary-color);
     box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
     position: relative;
     overflow: hidden;
-    border-radius: 3px;
+    border-radius: 15px;
 }
 
 .movie img {
@@ -86,7 +86,7 @@ main {
 .movie-info span {
     background-color: var(--primary-color);
     padding: 0.25rem 0.5rem;
-    border-radius: 3px;
+    border-radius: 350px;
     font-weight: bold;
 }
 
@@ -117,4 +117,16 @@ main {
 
 .movie:hover .overview {
     transform: translateY(0);
+}
+
+.movie:hover {
+    border: 2px solid #03ff03;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+    .search {
+        margin-left: 80px;
+        width: 150px;
+    }
 }
