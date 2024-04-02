@@ -25,12 +25,13 @@ header {
     display: flex;
 }
 
-button {
+#btn-search {
     color: darkgray;
     padding: 10px 15px;
     background-color: transparent;
     margin-left: -50px;
     border: none;
+    cursor: pointer;
 }
 
 .search {
@@ -62,7 +63,7 @@ main {
     box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
     position: relative;
     overflow: hidden;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .movie img {
@@ -86,7 +87,7 @@ main {
 .movie-info span {
     background-color: var(--primary-color);
     padding: 0.25rem 0.5rem;
-    border-radius: 350px;
+    border-radius: 14px;
     font-weight: bold;
 }
 
@@ -126,21 +127,7 @@ main {
 
 @media screen and (max-width: 800px) {
     .search {
-        margin-left: 80px;
-        width: 150px;
-    }
-    
-    .movie {
-        width: 90px;
-        height: 135px;
-    }
-
-    .movie img {
-        width: 100%;
-    }
-
-    .overview {
-        padding: 1px;
-        font-size: 5px;
+        margin-left: 50px;
+        width: 180px;
     }
 }

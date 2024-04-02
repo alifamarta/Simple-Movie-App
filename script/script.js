@@ -5,15 +5,19 @@ const SEARCH_API = 'https://api.themoviedb.org/3/search/movie?api_key=3fd2be6f0c
 const main = document.getElementById('main');
 const form = document.getElementById('form');
 const search = document.getElementById('search');
-const closeBtn = document.querySelector('.close');
 
 getMovies(API_URL)
 
 async function getMovies(url) {
-    const res = await fetch(url);
-    const data = await res.json();
-
-    showMovies(data.results);
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+    
+        showMovies(data.results);
+    } catch (err) {
+        alert(err);
+        console.error(err);
+    }
 }
 
 function showMovies(movies) {
@@ -40,11 +44,6 @@ function showMovies(movies) {
 
     });
 }
-
-closeBtn.addEventListener('click', () => {
-    movieModal.style.display = 'none';
-});
-
 function getClassByRate(vote) {
     if (vote >= 8) {
         return 'green';
