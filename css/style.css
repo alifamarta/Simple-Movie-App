@@ -62,7 +62,7 @@ main {
     box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
     position: relative;
     overflow: hidden;
-    border-radius: 15px;
+    border-radius: 5px;
 }
 
 .movie img {
@@ -128,5 +128,19 @@ main {
     .search {
         margin-left: 80px;
         width: 150px;
+    }
+    
+    .movie {
+        width: 90px;
+        height: 135px;
+    }
+
+    .movie img {
+        width: 100%;
+    }
+
+    .overview {
+        padding: 1px;
+        font-size: 5px;
     }
 }
