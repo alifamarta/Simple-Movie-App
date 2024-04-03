@@ -27,7 +27,7 @@ async function getMovies(url) {
 function showMovies(movies) {
     main.innerHTML = '';
     movies.forEach(movie => {
-        const { title, poster_path, vote_average, overview } = movie;
+        const { title, poster_path, vote_average} = movie;
 
         const movieEl = document.createElement('div');
         movieEl.classList.add('movie');
@@ -38,14 +38,57 @@ function showMovies(movies) {
             <h3>${title}</h3>
             <span class="${getClassByRate(vote_average)}">${vote_average.toFixed(1)}</span>
         </div>
-        <div class="overview">
-            <h3>Overview</h3>
-            ${overview}
-        </div>
         `;
         main.appendChild(movieEl);
 
+        movieEl.addEventListener('click', () => showMovieDetails(movie));
     });
+}
+
+function showMovieDetails(movie) {
+    const { title, poster_path, vote_average, overview } = movie;
+    const modal = document.getElementById('movieModal') || createModal();
+
+    modal.style.display = 'block';
+
+    const ratingColor = getClassByRate(vote_average);
+
+    modal.querySelector('.modal-rating').style.color = ratingColor;
+
+    modal.querySelector('.modal-title').textContent = title;
+    modal.querySelector('.modal-img').src = IMG_PATH + poster_path;
+    modal.querySelector('.modal-rating').textContent = `${vote_average.toFixed(1)}`;
+    modal.querySelector('.modal-overview').textContent = overview;
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+}
+
+function createModal() {
+    const modal = document.createElement('div');
+    modal.setAttribute('id', 'movieModal');
+    modal.classList.add('modal');
+
+    modal.innerHTML = `
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <img class="modal-img" src="" alt="">
+        <h2 class="modal-title"></h2>
+        <p class="modal-rating"></p>
+        <p class="modal-overview"></p>
+    </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    modal.querySelector('.close').onclick = function () {
+       modal.style.display = "none" 
+    }
+
+    return modal;
 }
 
 // Mengambil data rating lalu merubah warna
@@ -80,4 +123,3 @@ form.addEventListener('submit', (e) => {
         window.location.reload();
     }
 })
-

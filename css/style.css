@@ -106,27 +106,100 @@ main {
     color: red;
 }
 
-/* Deskripsi dalam poster */
-.overview {
-    background-color: #fff;
-    padding: 2rem;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    max-height: 100%;
-    transform: translateY(101%);
-    overflow-y: auto;
-    transition: transform 0.1s ease-in;
-}
-
-.movie:hover .overview {
-    transform: translateY(0);
-}
-
 .movie:hover {
     border: 2px solid #03ff03;
     cursor: pointer;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #000;
+    background-color: #00000066;
+    color: white;
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: var(--secondary-color);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid var(--primary-color);
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+}
+
+/* Animation */
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0;
+    }
+    
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+/* Close button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Header Modal */
+.modal-img {
+    display: block;
+    margin-left: 10px;
+    margin-right: auto;
+    width: 20%;
+}
+
+.modal-title {
+    margin-left: 250px;
+    font-size: 24px;
+    margin-top: -250px;
+}
+
+/* Konten modal */
+.modal-rating, .modal-overview {
+    margin-top: 10px;
+    margin-left: 250px;
+    text-align: justify;
+}
+
+.modal-rating {
+    margin-top: 5px;
+    font-weight: bolder;
+    background-color: var(--primary-color);
+    width: 3%;
+    padding: 0px 5px;
+    border-radius: 14px;
+}
+
+.modal-overview {
+    margin-top: 25px;
+    margin-bottom: 100px;
 }
 
 @media screen and (max-width: 800px) {
