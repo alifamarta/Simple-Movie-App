@@ -1,11 +1,14 @@
+// URL API
 const API_URL = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=3fd2be6f0c70a2a598f084ddfb75487c&page=1';
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 const SEARCH_API = 'https://api.themoviedb.org/3/search/movie?api_key=3fd2be6f0c70a2a598f084ddfb75487c&query="';
 
+// Mengambil element html
 const main = document.getElementById('main');
 const form = document.getElementById('form');
 const search = document.getElementById('search');
 
+// Mengambil data film dari API
 getMovies(API_URL)
 
 async function getMovies(url) {
@@ -20,9 +23,9 @@ async function getMovies(url) {
     }
 }
 
+// Menampilkan data movie dari API
 function showMovies(movies) {
     main.innerHTML = '';
-
     movies.forEach(movie => {
         const { title, poster_path, vote_average, overview } = movie;
 
@@ -44,6 +47,8 @@ function showMovies(movies) {
 
     });
 }
+
+// Mengambil data rating lalu merubah warna
 function getClassByRate(vote) {
     if (vote >= 8) {
         return 'green';
@@ -54,6 +59,7 @@ function getClassByRate(vote) {
     }
 }
 
+// Element search
 search.addEventListener("keyup", function (event) {
     if (event.key === "enter") {
         event.preventDefault();
@@ -61,6 +67,7 @@ search.addEventListener("keyup", function (event) {
     }
 })
 
+// Menampilkan halaman search
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 

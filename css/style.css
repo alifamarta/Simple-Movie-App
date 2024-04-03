@@ -15,12 +15,14 @@ body {
     margin: 0;
 }
 
+/* Header */
 header {
     padding: 1rem;
     display: flex;
     background-color: var(--primary-color);
 }
 
+/* Pencarian */
 #form {
     display: flex;
 }
@@ -49,6 +51,7 @@ header {
     outline: none;
 }
 
+/* Isi konten */
 main {
     display: flex;
     flex-wrap: wrap;
@@ -103,6 +106,7 @@ main {
     color: red;
 }
 
+/* Deskripsi dalam poster */
 .overview {
     background-color: #fff;
     padding: 2rem;
