@@ -51,7 +51,7 @@ function showMovieDetails(movie) {
 
     modal.style.display = 'block';
 
-    const ratingColor = getClassByRate(vote_average);
+    const ratingColor = getColorbyRate(vote_average);
 
     modal.querySelector('.modal-rating').style.color = ratingColor;
 
@@ -95,6 +95,16 @@ function createModal() {
 function getClassByRate(vote) {
     if (vote >= 8) {
         return 'green';
+    } else if (vote > 5) {
+        return 'orange';
+    } else {
+        return 'red';
+    }
+}
+
+function getColorbyRate(vote) {
+    if (vote >= 8) {
+        return '#00ce7a';
     } else if (vote > 5) {
         return 'orange';
     } else {
