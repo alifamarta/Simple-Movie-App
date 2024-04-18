@@ -243,7 +243,7 @@ main {
         width: 100%;
         font-size: 24px;
         margin-left: 0px;
-        padding: 0 12px;
+        padding: 0 10.5px;
     }
 
     .modal-title, .modal-overview {
@@ -252,6 +252,6 @@ main {
     }
 
     .modal-rating {
-        width: 21%;
+        width: 17%;
     }
 }
