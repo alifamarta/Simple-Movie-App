@@ -76,7 +76,7 @@ function createModal() {
         <span class="close">&times;</span>
         <img class="modal-img" src="" alt="">
         <h2 class="modal-title"></h2>
-        <p class="modal-rating"></p>
+        <span class="modal-rating"></span>
         <p class="modal-overview"></p>
     </div>
     `;
