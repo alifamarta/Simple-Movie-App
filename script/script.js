@@ -18,7 +18,6 @@ async function getMovies(url) {
     
         showMovies(data.results);
     } catch (err) {
-        alert(err);
         console.error(err);
     }
 }
