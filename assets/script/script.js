@@ -79,16 +79,6 @@ function getClassByRate(vote) {
     }
 }
 
-function getColorbyRate(vote) {
-    if (vote >= 7) {
-        return '#00ce7a';
-    } else if (vote > 5) {
-        return 'orange';
-    } else {
-        return 'red';
-    }
-}
-
 // Element search
 search.addEventListener("keyup", function (event) {
     if (event.key === "enter") {
