@@ -1,7 +1,7 @@
 // URL API
-const API_URL = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=3fd2be6f0c70a2a598f084ddfb75487c&page=1';
+const API_URL = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=3e5b8523dd4a0a2b29e901b0c83d7cc5&page=1';
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
-const SEARCH_API = 'https://api.themoviedb.org/3/search/movie?api_key=3fd2be6f0c70a2a598f084ddfb75487c&query="';
+const SEARCH_API = 'https://api.themoviedb.org/3/search/movie?api_key=3e5b8523dd4a0a2b29e901b0c83d7cc5&query="';
 
 // Mengambil element html
 const main = document.getElementById('main');
@@ -15,7 +15,7 @@ async function getMovies(url) {
     try {
         const res = await fetch(url);
         const data = await res.json();
-    
+
         showMovies(data.results);
     } catch (err) {
         console.error(err);
@@ -26,9 +26,9 @@ async function getMovies(url) {
 function showMovies(movies) {
     main.innerHTML = '';
     movies.forEach(movie => {
-        const { title, poster_path, vote_average} = movie;
+        const { title, poster_path, vote_average } = movie;
 
-        const movieEl = document.createElement('div');
+        let movieEl = document.createElement('div');
         movieEl.classList.add('movie');
 
         movieEl.innerHTML = `
@@ -45,54 +45,32 @@ function showMovies(movies) {
 }
 
 function showMovieDetails(movie) {
-    const { title, poster_path, vote_average, overview } = movie;
-    const modal = document.getElementById('movieModal') || createModal();
+    // membuat URL untuk halaman detail
+    const url = `assets/pages/detail.html?id=${movie.id}`;
 
-    modal.style.display = 'block';
+    // membuka halaman detail
+    const newWindow = window.open(url, '_blank');
 
-    const ratingColor = getColorbyRate(vote_average);
+    newWindow.onload = function () {
+        const urlParams = new URLSearchParams(newWindow.location.search);
 
-    modal.querySelector('.modal-rating').style.color = ratingColor;
+        fetch(`https://api.themoviedb.org/3/movie/${movie.id}?api_key=3e5b8523dd4a0a2b29e901b0c83d7cc5&language=en-US`)
+            .then(res => res.json())
+            .then(data => {
+                const movie = data;
 
-    modal.querySelector('.modal-title').textContent = title;
-    modal.querySelector('.modal-img').src = IMG_PATH + poster_path;
-    modal.querySelector('.modal-rating').textContent = `${vote_average.toFixed(1)}`;
-    modal.querySelector('.modal-overview').textContent = overview;
-
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = 'none';
-        }
+                // movie page
+                newWindow.document.querySelector('.movie-img').src = IMG_PATH + movie.poster_path;
+                newWindow.document.querySelector('.movie-title').textContent = movie.title;
+                newWindow.document.querySelector('.text-rating').textContent = movie.vote_average.toFixed(1);
+                newWindow.document.querySelector('.movie-overview').textContent = movie.overview;
+            })
     }
-}
-
-function createModal() {
-    const modal = document.createElement('div');
-    modal.setAttribute('id', 'movieModal');
-    modal.classList.add('modal');
-
-    modal.innerHTML = `
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <img class="modal-img" src="" alt="">
-        <h2 class="modal-title"></h2>
-        <span class="modal-rating"></span>
-        <p class="modal-overview"></p>
-    </div>
-    `;
-
-    document.body.appendChild(modal);
-
-    modal.querySelector('.close').onclick = function () {
-       modal.style.display = "none" 
-    }
-
-    return modal;
 }
 
 // Mengambil data rating lalu merubah warna
 function getClassByRate(vote) {
-    if (vote >= 8) {
+    if (vote >= 7) {
         return 'green';
     } else if (vote > 5) {
         return 'orange';
@@ -102,7 +80,7 @@ function getClassByRate(vote) {
 }
 
 function getColorbyRate(vote) {
-    if (vote >= 8) {
+    if (vote >= 7) {
         return '#00ce7a';
     } else if (vote > 5) {
         return 'orange';
