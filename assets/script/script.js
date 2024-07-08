@@ -64,7 +64,16 @@ function showMovieDetails(movie) {
                 newWindow.document.querySelector('.movie-title').textContent = movie.title;
                 newWindow.document.querySelector('.text-rating').textContent = movie.vote_average.toFixed(1);
                 newWindow.document.querySelector('.movie-overview').textContent = movie.overview;
-            })
+                newWindow.document.querySelector('.movie-runtime').textContent = `${movie.runtime}m`;
+
+                // movie genre
+                const genreList = newWindow.document.querySelector('.movie-genre');
+                movie.genres.forEach(genre => {
+                    const li = document.createElement('li');
+                    li.textContent = genre.name;
+                    genreList.appendChild(li);
+                });
+            });
     }
 }
 
