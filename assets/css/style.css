@@ -67,7 +67,7 @@ main {
     height: 600px;
     margin: 1rem;
     background-color: var(--secondary-color);
-    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 5px #00000033;
     position: relative;
     overflow: hidden;
     border-radius: 10px;
